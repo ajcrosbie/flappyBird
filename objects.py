@@ -14,16 +14,10 @@ class bird ():
                 pygame.quit()
 
         if keys[pygame.K_SPACE] and self.dir > -5:
-            self.dir = -10
+            self.dir = -9
 
         self.pos = self.pos + self.dir
         self.dir = self.dir + 1
-        print(self.pos)
-
-    def collision(self, pipe):
-        for i in range(pipe.height):
-            if pipe.height:
-                pass
 
     def draw(self, win):
         pygame.draw.circle(win, self.colour, (100, self.pos), self.size)
@@ -35,7 +29,10 @@ class pipe():
         self.pos = pos
 
     def move(self):
-        pass
+        t = self.pos[0]
+        g = self.pos[1]
+        t = t - 10
+        self.pos = (t, g)
 
     def draw(self, win):
-        pygame.draw.rect(win, (0, 255, 0), ((pos), (height, 200)))
+        pygame.draw.rect(win, (0, 255, 0), ((self.pos), (200, self.height)))
