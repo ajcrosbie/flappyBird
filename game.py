@@ -25,7 +25,10 @@ def collisions(bird, pipes):
     for i in pipes:
         for b in range(i.height):
             for v in range(100):
-                if bird.pos == i.pos[1] + b:
+                if bird.pos + bird.size == i.pos[1] + b:
+                    if 100 == i.pos[0] + v:
+                        t = reset(bird)
+                elif bird.pos - bird.size == i.pos[1] + b:
                     if 100 == i.pos[0] + v:
                         t = reset(bird)
                         return t
