@@ -23,15 +23,17 @@ def redrawWindow(win, bird, pipes):
 
 def collisions(bird, pipes):
     for i in pipes:
-        for b in range(i.height):
-            for v in range(100):
-                if bird.pos + bird.size == i.pos[1] + b:
-                    if 100 == i.pos[0] + v:
-                        t = reset(bird)
-                elif bird.pos - bird.size == i.pos[1] + b:
-                    if 100 == i.pos[0] + v:
-                        t = reset(bird)
-                        return t
+        if i.pos[0] < 100 and i.pos[0] > -100:
+            for b in range(i.height):
+                for v in range(50):
+                    s = v*4
+                    if bird.pos + bird.size == i.pos[1] + b:
+                        if 100 == i.pos[0] + s:
+                            t = reset(bird)
+                    elif bird.pos - bird.size == i.pos[1] + b:
+                        if 100 == i.pos[0] + s:
+                            t = reset(bird)
+                            return t
     return True
 
 
@@ -64,7 +66,7 @@ def createObsticle(pipes, height, width, v=False):
 def removePipe(pipes):
     c = pipes.copy()
     for i in pipes:
-        if i.pos[0] == -200:
+        if i.pos[0] == -190:
             c.remove(i)
     return c
 
@@ -92,7 +94,6 @@ def main():
             pass
         else:
             pipes = []
-
             createObsticle(pipes, height, width, True)
         redrawWindow(win, bird, pipes)
 
