@@ -30,6 +30,7 @@ def collisions(bird, pipes):
                     if bird.pos + bird.size == i.pos[1] + b:
                         if 100 == i.pos[0] + s:
                             t = reset(bird)
+                            return t
                     elif bird.pos - bird.size == i.pos[1] + b:
                         if 100 == i.pos[0] + s:
                             t = reset(bird)
@@ -46,7 +47,7 @@ def reset(bird):
 def createObsticle(pipes, height, width, v=False):
     if v:
         Pheight = random.randrange(height - 150)
-        pos = (width, 0)
+        pos = (width, -10)
         pipes.append(objects.pipe(Pheight, pos))
 
         NPheight = (height + 150) + Pheight
@@ -55,7 +56,7 @@ def createObsticle(pipes, height, width, v=False):
 
     elif pipes[-1].pos[0] == 250:
         Pheight = random.randrange(height - 120)
-        pos = (width, 0)
+        pos = (width, -10)
         pipes.append(objects.pipe(Pheight, pos))
 
         NPheight = height + 120 + Pheight
