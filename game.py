@@ -25,8 +25,8 @@ def collisions(bird, pipes):
     for i in pipes:
         if i.pos[0] < 100 and i.pos[0] > -100:
             for b in range(i.height):
-                for v in range(50):
-                    s = v*4
+                for v in range(10):
+                    s = v*20
                     if bird.pos + bird.size == i.pos[1] + b:
                         if 100 == i.pos[0] + s:
                             t = reset(bird)
@@ -81,8 +81,8 @@ def main():
     createObsticle(pipes, height, width, True)
     clock = pygame.time.Clock()
     while True:
-        pygame.time.delay(30)
-        clock.tick(20)
+        pygame.time.delay(20)
+        clock.tick(30)
         keys = pygame.key.get_pressed()
         bird.jump(keys)
         for i in pipes:
